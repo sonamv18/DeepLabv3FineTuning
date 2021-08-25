@@ -19,7 +19,7 @@ from trainer import train_model
               help="Specify the experiment directory.")
 @click.option(
     "--epochs",
-    default=25,
+    default=1,
     type=int,
     help="Specify the number of epochs you want to run the experiment for.")
 @click.option("--batch-size",
@@ -43,10 +43,10 @@ def main(data_directory, exp_directory, epochs, batch_size):
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 
     # Specify the evaluation metrics
-    metrics = {'f1_score': f1_score, 'auroc': roc_auc_score}
-
+    metrics = {'f1_score': f1_score}
+    #, 'auroc': roc_auc_score
     # Create the dataloader
-    dataloaders = datahandler.get_dataloader_single_folder(
+    dataloaders = datahandler.get_dataloader_sep_folder(
         data_directory, batch_size=batch_size)
     _ = train_model(model,
                     criterion,

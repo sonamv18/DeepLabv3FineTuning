@@ -7,8 +7,8 @@ from segdataset import SegmentationDataset
 
 
 def get_dataloader_sep_folder(data_dir: str,
-                              image_folder: str = 'Image',
-                              mask_folder: str = 'Mask',
+                              image_folder: str = 'images',
+                              mask_folder: str = 'labels',
                               batch_size: int = 4):
     """ Create Train and Test dataloaders from two
         separate Train and Test folders.
